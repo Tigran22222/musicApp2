@@ -20,9 +20,7 @@ type AlbumStorage struct {
 	Musics []Music
 }
 
-func (storage AlbumStorage) ShowMusicInChoosenAlbum() {
-	panic("unimplemented")
-}
+
 
 func (storage *AlbumStorage) AddAlbum(Name string, createdAt int) {
 	for _, album := range storage.Albums {

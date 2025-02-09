@@ -29,16 +29,16 @@ func (storage*AlbumStorage) DeleteAlbum(){
 		fmt.Println("Нет альбомов для удаления")
 		return
 	}
-	fmt.Println("Выберите альбом для удаления")
+	fmt.Println("Выберите альбом для удаления:")
 	for i, album := range storage.Albums{
 		fmt.Printf("%d. %s\n", i+1, album.Name)
 	}
 
 var choice int
-fmt.Println("Введите номер альбома")
+fmt.Println("Введите номер альбома:")
 _, err:= fmt.Scan(&choice)
 if err != nil || choice<1 || choice > len(storage.Albums){
-	fmt.Println("Ошибка. Введите корректный номер альбома")
+	fmt.Println("Ошибка. Введите корректный номер альбома:")
 	return
 }
 storage.Albums = append(storage.Albums[:choice-1], storage.Albums[choice:]...)
@@ -52,13 +52,13 @@ if len(storage.Albums)==0 {
 	return
 }
 
-fmt.Println("Выберите альбом, из которого хотите удалить песни")
+fmt.Println("Выберите альбом, из которого хотите удалить песни:")
 for i, album := range storage.Albums{
 	fmt.Printf("%d. %s\n", i+1, album.Name)
 }
  
 var albumChoice int
-fmt.Print("Введите номер алььбома")
+fmt.Print("Введите номер алььбома:")
 _, err := fmt.Scan(&albumChoice)
 if err!= nil || albumChoice <1 || albumChoice >len(storage.Albums){
 	fmt.Println("Ошибка. Введите корректный номер альбома")
@@ -71,13 +71,13 @@ if len(chosenAlbum.Musics) == 0{
 	return
 }
 
-fmt.Println("Выберите песню для удаления")
+fmt.Println("Выберите песню для удаления:")
 for i, music:= range chosenAlbum.Musics{
 	fmt.Printf("%d. %s\n", i+1, music.Name)
 }
 
 var musicChoice int
-fmt.Print("Введите номер песни")
+fmt.Print("Введите номер песни:")
 _, err = fmt.Scan(&musicChoice)
 if err != nil || musicChoice < 1 || musicChoice > len(chosenAlbum.Musics){
 	fmt.Println("Ошибка. Введите корректный номер песни")
@@ -145,11 +145,10 @@ fmt.Println("Песня успешно удалена")
 
 	for{
 	fmt.Println("Введите название песни:")
-	var musicName string
 	fmt.Scan(&musicName)
 	if len(musicName) < 3{
 		fmt.Println("Ошибка. Название песни слишком короткое, введите хотя бы 3 символа")
-	}else if len(musicName) <=100 {
+	}else if len(musicName) >=100 {
 		fmt.Println("Ошибка. Название песни слишкоим длинное, введите название меньше 100 символов")
 	} else{
 		break
@@ -240,7 +239,7 @@ fmt.Println("Песня успешно удалена")
 	  //обработка ввода пример
 	  if err != nil {
 	   fmt.Println("введено неверное значение попробуйте снова")
-	   continue
+	   break
 	  }
 	  
 	  fmt.Println("Введите год выпуска альбома")
